@@ -27,7 +27,7 @@ const person = {
     },
 
     John: {
-        name : "Trevor", // String
+        name : "John", // String
         role: "Prof",
         nickname: "Morpheus",
         desc: "all about me blah blah blah",

@@ -10,32 +10,25 @@
     <title>Learning NPM and SASS</title>
 </head>
 <body>
-    <header class="header">
-        <nav>
-            <ul>
-                <li>one</li>
-                <li>two</li>
-                <li>three</li>
-                <li>four</li>
-            </ul>
-        </nav>
-    </header>
+    <h1 class="hidden">This is a team page</h1>
 
-    <main class="content">
-        <article>
-            <h1 class="user-name"></h1>
-            <aside class="user-bio"></aside>
-        </article>
-    </main>
+    <section id="team-section"></section>
 
-    <footer>
-        <nav class="subnav">
-            <ul>
-                <li>one</li>
-                <li>two</li>
-            </ul>
-        </nav>
-    </footer>
+
+    <!-- template tags should go at the bottom of the HTML markup -->
+    <!-- template tags don't get rendered, but their content does -->
+    <template id="bio-template">
+        <section class="bio-panel">
+            <div class="avatar">
+                <!-- src gets added dynamically -->
+                <img src="" alt="prof image">
+            </div>
+            <!-- slug is just placeholder - this will get replaced -->
+            <h2 class="p_name">slug</h2>
+            <h3 class="p_role">slug</h3>
+            <p class="p_nickname">slug</p>
+        </section>
+    </template>
 
     <!-- your JS always goes here -->
     <!-- make the JS file wait to be parsed with the defer attribute (last thing the DOM engine reads)-->
