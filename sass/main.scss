@@ -4,9 +4,13 @@
 
 // import mobile styles first
 @import "./modules/_defaults.scss";
+@import "./modules/_queries.scss";
 
 // component files next
 
 @import "./modules/_main.scss";
 @import "./modules/_header.scss";
 @import "./modules/_footer.scss";
+
+// atomic files go here
+@import "./modules/_biopanel.scss";
