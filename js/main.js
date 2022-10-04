@@ -8,7 +8,8 @@ import { getData } from "./modules/dataMiner.js";
     console.log('fired!');
 
     let theTeam = document.querySelector('#team-section'),
-        theTemplate = document.querySelector('#bio-template').content;
+        theTemplate = document.querySelector('#bio-template').content,
+        buttonContainer = document.querySelector('.queryControls');
 
         // debugger;
 
@@ -36,5 +37,39 @@ import { getData } from "./modules/dataMiner.js";
         })
     }
 
-    getData(buildTeam);
+    function buildJoke(joke) {
+        debugger;
+        let jokeText = document.querySelector('.query-result');
+
+        jokeText.textContent = joke.value;
+    }
+
+    function addCatButtons(categories) {
+        let activeButtons = categories.filter(item => item !== 'explicit').slice(0, 6);
+
+        activeButtons.forEach(button => {
+            let buttonEl = `<button class="joke-button" data-cat=${button}>${button}</button>`;
+
+            buttonContainer.innerHTML += buttonEl;
+        })
+    }
+
+    function getJoke(event) {
+        // debugger;
+        // if there's not category on a click, then don't do anything
+        // because that'll just throw an error -> targetCategory won't be defined
+        if (!event.target.dataset.cat) { return; } // ! is the NOT operator (checks to see if this is true)
+        // if there IS a custom data attribute, (clicked on a button), retrieve it and use that as the category 
+        // query parameter
+
+        getData(`https://api.chucknorris.io/jokes/random?category="${event.target.dataset.cat}"`, buildJoke);
+    }
+
+    // getData('./data.json', buildTeam);
+    // getData('https://api.chucknorris.io/jokes/random', buildJoke);
+
+    // use event delegation to handle clicks on each button
+    buttonContainer.addEventListener('click', getJoke);
+
+    getData('https://api.chucknorris.io/jokes/categories', addCatButtons);
 })();
